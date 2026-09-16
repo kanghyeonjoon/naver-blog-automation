@@ -1,0 +1,236 @@
+{
+  "alignOptions": [
+    {
+      "cls": "se-property-toolbar-drop-down-button se-align-left-toolbar-button se-is-activated __se-sen",
+      "dataValue": null,
+      "dataName": "align-drop-down-with-justify",
+      "text": "정렬\n정렬 닫기"
+    },
+    {
+      "cls": "__se-sentry se-toolbar-option-icon-button se-toolbar-option-align-left-button se-is-select",
+      "dataValue": "left",
+      "dataName": "align-drop-down-with-justify",
+      "text": "왼쪽 정렬\n선택됨"
+    },
+    {
+      "cls": "__se-sentry se-toolbar-option-icon-button se-toolbar-option-align-center-button",
+      "dataValue": "center",
+      "dataName": "align-drop-down-with-justify",
+      "text": "가운데 정렬"
+    },
+    {
+      "cls": "__se-sentry se-toolbar-option-icon-button se-toolbar-option-align-right-button",
+      "dataValue": "right",
+      "dataName": "align-drop-down-with-justify",
+      "text": "오른쪽 정렬"
+    },
+    {
+      "cls": "__se-sentry se-toolbar-option-icon-button se-toolbar-option-align-justify-button",
+      "dataValue": "justify",
+      "dataName": "align-drop-down-with-justify",
+      "text": "양끝 정렬"
+    }
+  ],
+  "colorPalette": [
+    {
+      "tag": "BUTTON",
+      "cls": "se-property-toolbar-color-picker-button se-font-color-toolbar-button se-is-activ",
+      "dataValue": null,
+      "dataColor": null,
+      "title": "",
+      "aria": null
+    },
+    {
+      "tag": "SPAN",
+      "cls": "se-toolbar-color-picker-icon",
+      "dataValue": null,
+      "dataColor": null,
+      "title": null,
+      "aria": null
+    },
+    {
+      "tag": "LI",
+      "cls": "se-color-swatches-item",
+      "dataValue": null,
+      "dataColor": null,
+      "title": null,
+      "aria": null
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "se-color-palette se-color-palette-no-color se-is-selected",
+      "dataValue": null,
+      "dataColor": "",
+      "title": "색상 없음",
+      "aria": null
+    },
+    {
+      "tag": "LI",
+      "cls": "se-color-swatches-item",
+      "dataValue": null,
+      "dataColor": null,
+      "title": null,
+      "aria": null
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "se-color-palette",
+      "dataValue": null,
+      "dataColor": "#999999",
+      "title": "#999999",
+      "aria": null
+    },
+    {
+      "tag": "LI",
+      "cls": "se-color-swatches-item",
+      "dataValue": null,
+      "dataColor": null,
+      "title": null,
+      "aria": null
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "se-color-palette",
+      "dataValue": null,
+      "dataColor": "#ffcdc0",
+      "title": "#ffcdc0",
+      "aria": null
+    },
+    {
+      "tag": "LI",
+      "cls": "se-color-swatches-item",
+      "dataValue": null,
+      "dataColor": null,
+      "title": null,
+      "aria": null
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "se-color-palette",
+      "dataValue": null,
+      "dataColor": "#ffe3c8",
+      "title": "#ffe3c8",
+      "aria": null
+    },
+    {
+      "tag": "LI",
+      "cls": "se-color-swatches-item",
+      "dataValue": null,
+      "dataColor": null,
+      "title": null,
+      "aria": null
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "se-color-palette",
+      "dataValue": null,
+      "dataColor": "#fff8b2",
+      "title": "#fff8b2",
+      "aria": null
+    },
+    {
+      "tag": "LI",
+      "cls": "se-color-swatches-item",
+      "dataValue": null,
+      "dataColor": null,
+      "title": null,
+      "aria": null
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "se-color-palette",
+      "dataValue": null,
+      "dataColor": "#e3fdc8",
+      "title": "#e3fdc8",
+      "aria": null
+    },
+    {
+      "tag": "LI",
+      "cls": "se-color-swatches-item",
+      "dataValue": null,
+      "dataColor": null,
+      "title": null,
+      "aria": null
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "se-color-palette",
+      "dataValue": null,
+      "dataColor": "#c2f4db",
+      "title": "#c2f4db",
+      "aria": null
+    },
+    {
+      "tag": "LI",
+      "cls": "se-color-swatches-item",
+      "dataValue": null,
+      "dataColor": null,
+      "title": null,
+      "aria": null
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "se-color-palette",
+      "dataValue": null,
+      "dataColor": "#bdfbfa",
+      "title": "#bdfbfa",
+      "aria": null
+    },
+    {
+      "tag": "LI",
+      "cls": "se-color-swatches-item",
+      "dataValue": null,
+      "dataColor": null,
+      "title": null,
+      "aria": null
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "se-color-palette",
+      "dataValue": null,
+      "dataColor": "#b0f1ff",
+      "title": "#b0f1ff",
+      "aria": null
+    },
+    {
+      "tag": "LI",
+      "cls": "se-color-swatches-item",
+      "dataValue": null,
+      "dataColor": null,
+      "title": null,
+      "aria": null
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "se-color-palette",
+      "dataValue": null,
+      "dataColor": "#9bdfff",
+      "title": "#9bdfff",
+      "aria": null
+    },
+    {
+      "tag": "LI",
+      "cls": "se-color-swatches-item",
+      "dataValue": null,
+      "dataColor": null,
+      "title": null,
+      "aria": null
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "se-color-palette",
+      "dataValue": null,
+      "dataColor": "#fdd5f5",
+      "title": "#fdd5f5",
+      "aria": null
+    },
+    {
+      "tag": "LI",
+      "cls": "se-color-swatches-item",
+      "dataValue": null,
+      "dataColor": null,
+      "title": null,
+      "aria": null
+    }
+  ]
+}

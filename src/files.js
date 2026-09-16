@@ -1,0 +1,102 @@
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+export const DATA_DIR = path.join(__dirname, '..', 'data');
+export const AUTH_DIR = path.join(DATA_DIR, 'auth');
+export const SESSION_FILE = path.join(AUTH_DIR, 'naver-session.json');
+export const IMAGES_DIR = path.join(DATA_DIR, 'images');
+export const PERSONA_CACHE_DIR = path.join(DATA_DIR, 'persona', '.cache');
+
+export const FILE_TYPES = {
+  crawls: path.join(DATA_DIR, 'crawls'),
+  drafts: path.join(DATA_DIR, 'drafts'),
+  persona: path.join(DATA_DIR, 'persona'),
+  ideas: path.join(DATA_DIR, 'ideas'),
+};
+
+export function ensureDirs() {
+  for (const dir of [DATA_DIR, AUTH_DIR, IMAGES_DIR, PERSONA_CACHE_DIR, ...Object.values(FILE_TYPES)]) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+}
+
+// 초 단위까지 포함한 타임스탬프 → 같은 작업을 반복해도 파일명이 겹치지 않음
+export function timestamp() {
+  const d = new Date();
+  const p = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`;
+}
+
+export function sanitizeName(s) {
+  return String(s).replace(/[\\/:*?"<>|\s]+/g, '-').slice(0, 40) || 'untitled';
+}
+
+export function saveMd(type, baseName, content) {
+  const dir = FILE_TYPES[type];
+  if (!dir) throw new Error(`알 수 없는 파일 타입: ${type}`);
+  const fileName = `${sanitizeName(baseName)}_${timestamp()}.md`;
+  const filePath = path.join(dir, fileName);
+  fs.writeFileSync(filePath, content, 'utf-8');
+  return fileName;
+}
+
+/** 이미 존재하는 파일을 같은 이름으로 덮어쓰기 (초안 수정 저장용) */
+export function overwriteMd(type, name, content) {
+  const dir = FILE_TYPES[type];
+  if (!dir) throw new Error(`알 수 없는 파일 타입: ${type}`);
+  const safe = path.basename(name);
+  const filePath = path.join(dir, safe);
+  if (!fs.existsSync(filePath)) throw new Error(`파일을 찾을 수 없습니다: ${safe}`);
+  fs.writeFileSync(filePath, content, 'utf-8');
+  return safe;
+}
+
+export function listMd(type) {
+  const dir = FILE_TYPES[type];
+  if (!dir) throw new Error(`알 수 없는 파일 타입: ${type}`);
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith('.md'))
+    .map((f) => {
+      const st = fs.statSync(path.join(dir, f));
+      return { name: f, size: st.size, mtime: st.mtimeMs };
+    })
+    .sort((a, b) => b.mtime - a.mtime);
+}
+
+export function readMd(type, name) {
+  const dir = FILE_TYPES[type];
+  if (!dir) throw new Error(`알 수 없는 파일 타입: ${type}`);
+  // 경로 탈출 방지
+  const safe = path.basename(name);
+  const filePath = path.join(dir, safe);
+  if (!fs.existsSync(filePath)) throw new Error(`파일을 찾을 수 없습니다: ${safe}`);
+  return fs.readFileSync(filePath, 'utf-8');
+}
+
+export function deleteMd(type, name) {
+  const dir = FILE_TYPES[type];
+  if (!dir) throw new Error(`알 수 없는 파일 타입: ${type}`);
+  const safe = path.basename(name);
+  const filePath = path.join(dir, safe);
+  if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+}
+
+export function hasSession() {
+  return fs.existsSync(SESSION_FILE);
+}
+
+export function sessionInfo() {
+  if (!hasSession()) return { exists: false };
+  const st = fs.statSync(SESSION_FILE);
+  return { exists: true, savedAt: st.mtimeMs };
+}
+
+/** 초안별 이미지 폴더 경로 (draft 파일명에서 확장자 제거) */
+export function draftImagesDir(draftName) {
+  const base = path.basename(draftName, '.md');
+  return path.join(IMAGES_DIR, base);
+}

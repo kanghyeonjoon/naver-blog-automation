@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>네이버 블로그 자동화</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>📝 네이버 블로그 자동화</h1>
+    <div class="header-right">
+      <span id="sessionStatus" class="badge">세션 확인 중...</span>
+      <button id="sessionCheckBtn" class="btn secondary small" title="네이버·클립아트코리아 로그인이 아직 유효한지 실제로 확인합니다">🔍 세션 점검</button>
+      <button id="loginBtn" class="btn secondary">네이버 로그인</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="settings">⚙ 설정</button>
+    <button class="tab" data-tab="crawl">① 글감 수집</button>
+    <button class="tab" data-tab="generate">② 글 생성</button>
+    <button class="tab" data-tab="review">③ 검토 · 발행</button>
+    <button class="tab" data-tab="queue">⏱ 대기열 · 보관함</button>
+  </nav>
+
+  <main>
+    <!-- ⚙ 설정 -->
+    <section id="tab-settings" class="panel active">
+      <h2>기본 설정</h2>
+      <p class="hint">네이버 로그인은 우측 상단 버튼으로 진행합니다 — 브라우저 창이 열리면 직접 로그인하세요. 세션은 이 PC에만 저장됩니다.</p>
+      <div class="form-row">
+        <label>기본 카테고리 (비우면 기본값)
+          <input type="text" id="cfgCategory" placeholder="예: 일상" />
+        </label>
+        <label>공개 설정
+          <select id="cfgVisibility" style="min-width: 140px;">
+            <option value="전체공개">전체공개</option>
+            <option value="이웃공개">이웃공개</option>
+            <option value="서로이웃공개">서로이웃공개</option>
+            <option value="비공개">비공개</option>
+          </select>
+        </label>
+        <label>소제목 모양
+          <select id="cfgHeadingStyle" style="min-width: 200px;">
+            <option value="corner">모서리 박스 (인용구 6)</option>
+            <option value="underline">아래 밑줄 (인용구 4)</option>
+            <option value="center">가운데 텍스트 + 구분선</option>
+          </select>
+        </label>
+      </div>
+      <h2 style="margin-top: 24px;">이미지 소스</h2>
+      <p class="hint"><b>클립아트코리아 (권장)</b> — 유료 멤버십 계정이 있다면 아래 버튼으로 로그인 세션을 저장하세요. 발행 시 한국어 검색으로 글에 맞는 이미지를 자동 다운로드합니다.</p>
+      <div class="form-row">
+        <button id="clipartLoginBtn" class="btn primary">클립아트코리아 로그인</button>
+        <span id="clipartStatus" class="badge">세션 확인 중...</span>
+      </div>
+      <p class="hint" style="margin-top: 14px;">클립아트코리아가 없을 때의 대체 소스 (선택): 키가 없어도 무료 소스(Openverse·LoremFlickr)로 동작하지만 품질이 낮습니다.<br/>
+      · Pexels (권장): <a href="https://www.pexels.com/api/" target="_blank">pexels.com/api</a> 에서 가입 후 발급<br/>
+      · Pixabay: <a href="https://pixabay.com/api/docs/" target="_blank">pixabay.com/api/docs</a> 에서 가입 후 발급</p>
+      <div class="form-row">
+        <label>Pexels API 키
+          <input type="text" id="cfgPexels" placeholder="발급받은 키 붙여넣기" />
+        </label>
+        <label>Pixabay API 키
+          <input type="text" id="cfgPixabay" placeholder="발급받은 키 붙여넣기" />
+        </label>
+        <button id="cfgSaveBtn" class="btn primary">설정 저장</button>
+      </div>
+      <h2 style="margin-top: 24px;">글쓰기 스타일 가이드 (페르소나)</h2>
+      <p class="hint" id="personaHint">확인 중...</p>
+      <ul id="personaList" class="file-list" style="max-height: 160px;"></ul>
+    </section>
+
+    <!-- ① 글감 수집 -->
+    <section id="tab-crawl" class="panel">
+      <h2>글감 수집</h2>
+      <p class="hint">관심분야 키워드로 네이버 뉴스와 인기 블로그 글을 수집해 글감으로 저장합니다. 이미 소재로 쓴 글은 자동 제외됩니다.</p>
+      <div class="form-row">
+        <label>저장된 키워드에서 선택
+          <select id="keywordSelect"><option value="">(키워드 목록 로딩...)</option></select>
+        </label>
+        <button id="keywordRandomBtn" class="btn secondary">🎲 랜덤 선택</button>
+      </div>
+      <div class="form-row">
+        <label>키워드 (직접 수정 가능) <input type="text" id="keyword" placeholder="위에서 선택하거나 직접 입력" /></label>
+        <label class="check-label"><input type="checkbox" id="srcNews" checked /> 뉴스</label>
+        <label class="check-label"><input type="checkbox" id="srcBlog" checked /> 인기 블로그</label>
+        <label>소스당 개수 <input type="number" id="maxItems" value="5" min="1" max="15" /></label>
+        <button id="crawlBtn" class="btn primary">수집 시작</button>
+      </div>
+      <div id="crawlLog" class="log hidden"></div>
+      <div id="crawlResult" class="result hidden">
+        <h3>수집 결과 <span id="crawlResultFile" class="filename"></span></h3>
+        <pre id="crawlResultContent"></pre>
+      </div>
+    </section>
+
+    <!-- ② 글 생성 -->
+    <section id="tab-generate" class="panel">
+      <h2>AI 글 생성 <span class="ai-badge">Claude 구독 계정 사용</span></h2>
+      <p class="hint">수집한 글감을 바탕으로 자연스러운 블로그 글을 새로 작성합니다. 스타일 가이드(페르소나)가 있으면 자동 적용됩니다.<br/>
+      생성된 초안은 ③ 검토·발행 탭에서 수정하고 발행할 수 있습니다.</p>
+      <div class="form-col">
+        <label>글감 파일
+          <select id="generateSource"></select>
+        </label>
+      </div>
+      <p class="hint" style="margin-bottom: 8px;"><b>병원 명의 원고로 쓰려면</b> 아래 병원 정보를 채우세요 (환자 대상, 원장님이 직접 쓴 형식).<br/>
+      비워두면 <b>몽PD 칼럼</b>(원장님 대상 마케팅 칼럼)으로 작성됩니다.</p>
+      <div class="form-row">
+        <label>병원명 <input type="text" id="clinicName" placeholder="예: 라이블리성형외과" /></label>
+        <label>원장님 성함 <input type="text" id="clinicDoctor" placeholder="예: 서효완" style="min-width: 140px;" /></label>
+        <label>진료과목 <input type="text" id="clinicDept" placeholder="예: 성형외과" style="min-width: 140px;" /></label>
+        <label>다룰 시술·치료 <input type="text" id="clinicTopic" placeholder="예: 자연유착 쌍꺼풀" style="min-width: 180px;" /></label>
+      </div>
+      <div class="form-col">
+        <label>추가 요청사항 (선택)
+          <textarea id="instruction" rows="3" placeholder="예: 초보자 눈높이로, 실제 경험담처럼, 마지막에 제품 추천 포함"></textarea>
+        </label>
+        <button id="generateBtn" class="btn primary">글 생성</button>
+      </div>
+      <div id="generateLog" class="log hidden"></div>
+      <div id="generateResult" class="result hidden">
+        <h3>생성 완료 <span id="generateResultFile" class="filename"></span></h3>
+        <pre id="generateResultContent"></pre>
+        <button id="goReviewBtn" class="btn secondary" style="margin-top: 10px;">③ 검토·발행 탭으로 이동</button>
+      </div>
+    </section>
+
+    <!-- ③ 검토 · 발행 -->
+    <section id="tab-review" class="panel">
+      <h2>검토 · 발행</h2>
+      <p class="hint">초안을 확인·수정한 뒤 발행합니다.<br/>
+      블록 마커: <code>[H]</code> 소제목 · <code>[QUOTE]</code> 기울임 가운데 · <code>[IMG:n]</code> 이미지 · <code>[HR]</code> 구분선<br/>
+      인라인 마커: <code>**굵게**</code> · <code>@@빨강@@</code> · <code>%%파랑%%</code> · <code>==형광펜==</code></p>
+      <div class="form-row">
+        <label>초안 선택
+          <select id="draftSelect"></select>
+        </label>
+        <button id="draftLoadBtn" class="btn secondary">불러오기</button>
+      </div>
+      <div id="draftEditor" class="hidden">
+        <label>초안 내용 (수정 가능)
+          <textarea id="draftContent" rows="22"></textarea>
+        </label>
+        <div class="form-row" style="margin-top: 10px;">
+          <button id="draftSaveBtn" class="btn secondary">수정 저장</button>
+          <button id="imagesPrepareBtn" class="btn secondary">🖼 이미지 준비</button>
+          <button id="publishBtn" class="btn danger">네이버 블로그에 발행</button>
+          <button id="addQueueBtn" class="btn secondary">⏱ 대기열에 추가</button>
+        </div>
+        <div id="imagesPreview" class="images-preview"></div>
+        <div id="reviewLog" class="log hidden"></div>
+      </div>
+    </section>
+
+    <!-- ⏱ 대기열 · 보관함 -->
+    <section id="tab-queue" class="panel">
+      <h2>🤖 원클릭 자동 생성 <span class="ai-badge">수집 → 생성 → 이미지 → 대기열</span></h2>
+      <p class="hint">키워드를 쉼표로 여러 개 넣으면 각각 글감 수집부터 초안 생성·이미지 준비까지 자동으로 하고 대기열에 쌓아둡니다.<br/>
+      ② 탭의 병원 정보가 채워져 있으면 병원 명의 원고로, 비어 있으면 몽PD 칼럼으로 작성됩니다. 발행은 아래에서 시작을 눌러야 시작됩니다.</p>
+      <div class="form-row">
+        <label>키워드 (쉼표로 구분, 최대 10개)
+          <input type="text" id="autoKeywords" placeholder="예: 병원 유튜브 마케팅, 병원 플레이스 광고, 개원 마케팅" style="min-width: 420px;" />
+        </label>
+        <button id="autoKeywordFillBtn" class="btn secondary small">🎲 저장된 키워드에서 3개 채우기</button>
+      </div>
+      <div class="form-row">
+        <label>소스당 수집 개수 <input type="number" id="autoMaxItems" value="4" min="1" max="15" /></label>
+        <label>추가 요청사항 (선택) <input type="text" id="autoInstruction" placeholder="모든 글에 공통 적용" style="min-width: 260px;" /></label>
+        <button id="autoGenBtn" class="btn primary">🤖 자동 생성 시작</button>
+      </div>
+      <div id="autoGenLog" class="log hidden" style="max-height: 300px;"></div>
+
+      <h2 style="margin-top: 28px;">자동 발행 대기열</h2>
+      <p class="hint">초안을 대기열에 쌓아두고 시작을 누르면 설정한 간격으로 하나씩 자동 발행됩니다.<br/>
+      ⚠ 서버(이 프로그램)가 켜져 있는 동안에만 작동합니다. 첫 글은 시작 즉시 발행됩니다.</p>
+      <div class="form-row">
+        <label>발행 간격 (분) — 60 이상 권장
+          <input type="number" id="queueInterval" value="60" min="1" max="1440" />
+        </label>
+        <button id="queueStartBtn" class="btn primary">▶ 자동 발행 시작</button>
+        <button id="queueStopBtn" class="btn danger hidden">■ 중지</button>
+        <button id="queueRetryBtn" class="btn secondary">↻ 실패 항목 다시 시도</button>
+        <button id="queueClearBtn" class="btn secondary">완료/실패 항목 정리</button>
+      </div>
+      <div id="queueStatus" class="hint"></div>
+      <p class="hint" style="margin-bottom: 6px;">목록에서 글을 클릭하면 내용을 볼 수 있습니다.</p>
+      <ul id="queueList" class="file-list" style="max-height: 260px;"></ul>
+      <div id="queuePreview" class="result hidden" style="margin-top: 12px;">
+        <h3>미리보기 <span id="queuePreviewTitle" class="filename"></span></h3>
+        <div class="form-row" style="margin-bottom: 8px;">
+          <button id="queuePreviewEditBtn" class="btn secondary small">③ 검토·발행 탭에서 수정하기</button>
+          <button id="queuePreviewCloseBtn" class="btn secondary small">닫기</button>
+        </div>
+        <pre id="queuePreviewContent" style="max-height: 380px;"></pre>
+      </div>
+      <h3>자동 발행 로그</h3>
+      <div id="queueLog" class="log" style="max-height: 200px;"></div>
+
+      <h2 style="margin-top: 28px;">파일 보관함 <span id="topicsStatusLabel" class="filename"></span></h2>
+      <div class="form-row">
+        <label>종류
+          <select id="fileType">
+            <option value="crawls">글감 (수집 결과)</option>
+            <option value="drafts">초안</option>
+            <option value="persona">스타일 가이드</option>
+            <option value="ideas">키워드·아이디어</option>
+          </select>
+        </label>
+        <button id="refreshFilesBtn" class="btn secondary">새로고침</button>
+        <button id="topicsResetBtn" class="btn secondary small">발행 기록(중복 방지) 초기화</button>
+      </div>
+      <div class="file-layout">
+        <ul id="fileList" class="file-list"></ul>
+        <div class="file-view">
+          <div class="file-view-header">
+            <span id="fileViewName" class="filename"></span>
+            <button id="deleteFileBtn" class="btn danger small hidden">삭제</button>
+          </div>
+          <pre id="fileViewContent">파일을 선택하세요.</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

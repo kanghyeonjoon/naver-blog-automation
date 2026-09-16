@@ -1,0 +1,16 @@
+{
+  "name": "naver-blog-automation",
+  "version": "1.0.0",
+  "description": "네이버 블로그 자동화 — 글감 수집, AI 글 작성, 이미지 배치, 자동 발행",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.1.0",
+    "express": "^4.19.0",
+    "playwright": "^1.49.0",
+    "unpdf": "^0.12.1"
+  }
+}

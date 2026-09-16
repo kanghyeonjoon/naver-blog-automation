@@ -1,0 +1,457 @@
+{
+  "url": "https://blog.naver.com/medi_on-?Redirect=Write&categoryNo=1",
+  "toolbar": [
+    {
+      "cls": "se-image-toolbar-button se-document-toolbar-basic-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "image",
+      "dataValue": null,
+      "dataLog": "dot.img",
+      "aria": null,
+      "title": "",
+      "text": "사진\n사진 추가",
+      "visible": true
+    },
+    {
+      "cls": "se-social-media-image-toolbar-button se-document-toolbar-basic-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "social-media-image",
+      "dataValue": null,
+      "dataLog": "dot.snsimg",
+      "aria": null,
+      "title": "",
+      "text": "MYBOX\nMYBOX 추가",
+      "visible": true
+    },
+    {
+      "cls": "se-video-toolbar-button se-document-toolbar-basic-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "video",
+      "dataValue": null,
+      "dataLog": "dot.video",
+      "aria": null,
+      "title": "",
+      "text": "동영상\n동영상 추가",
+      "visible": true
+    },
+    {
+      "cls": "se-sticker-toolbar-button se-document-toolbar-toggle-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "sticker",
+      "dataValue": null,
+      "dataLog": "dot.sticker",
+      "aria": null,
+      "title": "",
+      "text": "스티커\n스티커 추가",
+      "visible": true
+    },
+    {
+      "cls": "se-document-toolbar-icon-select-button se-insert-quotation-default-toolbar-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "quotation",
+      "dataValue": "default",
+      "dataLog": "dot.quota",
+      "aria": null,
+      "title": "",
+      "text": "인용구 추가",
+      "visible": true
+    },
+    {
+      "cls": "se-document-toolbar-select-option-button se-text-icon-toolbar-select-option-button __se-sentry",
+      "dataName": "quotation",
+      "dataValue": null,
+      "dataLog": null,
+      "aria": null,
+      "title": "",
+      "text": "인용구 선택\n인용구 선택",
+      "visible": true
+    },
+    {
+      "cls": "se-document-toolbar-icon-select-button se-insert-horizontal-line-default-toolbar-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "horizontal-line",
+      "dataValue": "default",
+      "dataLog": "dot.horizt",
+      "aria": null,
+      "title": "",
+      "text": "구분선 추가",
+      "visible": true
+    },
+    {
+      "cls": "se-document-toolbar-select-option-button se-text-icon-toolbar-select-option-button __se-sentry",
+      "dataName": "horizontal-line",
+      "dataValue": null,
+      "dataLog": null,
+      "aria": null,
+      "title": "",
+      "text": "구분선 선택\n구분선 선택",
+      "visible": true
+    },
+    {
+      "cls": "se-oglink-toolbar-button se-document-toolbar-basic-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "oglink",
+      "dataValue": null,
+      "dataLog": "dot.link",
+      "aria": null,
+      "title": "",
+      "text": "링크\n링크 추가",
+      "visible": true
+    },
+    {
+      "cls": "se-file-toolbar-button se-document-toolbar-basic-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "file",
+      "dataValue": null,
+      "dataLog": "dot.file",
+      "aria": null,
+      "title": "",
+      "text": "파일\n파일 추가",
+      "visible": true
+    },
+    {
+      "cls": "se-schedule-toolbar-button se-document-toolbar-basic-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "schedule",
+      "dataValue": null,
+      "dataLog": "dot.schedule",
+      "aria": null,
+      "title": "",
+      "text": "일정\n일정 추가",
+      "visible": true
+    },
+    {
+      "cls": "se-code-toolbar-button se-document-toolbar-basic-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "code",
+      "dataValue": null,
+      "dataLog": "dot.code",
+      "aria": null,
+      "title": "",
+      "text": "소스코드\n소스코드 추가",
+      "visible": true
+    },
+    {
+      "cls": "se-table-toolbar-button se-document-toolbar-basic-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "table",
+      "dataValue": null,
+      "dataLog": "dot.table",
+      "aria": null,
+      "title": "",
+      "text": "표\n표 추가",
+      "visible": true
+    },
+    {
+      "cls": "se-formula-toolbar-button se-document-toolbar-basic-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "formula",
+      "dataValue": null,
+      "dataLog": "dot.formula",
+      "aria": null,
+      "title": "",
+      "text": "수식\n수식 추가",
+      "visible": true
+    },
+    {
+      "cls": "se-talktalk-toolbar-button se-document-toolbar-basic-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "talktalk",
+      "dataValue": null,
+      "dataLog": "dot.talktalk",
+      "aria": null,
+      "title": "",
+      "text": "톡톡\n톡톡 추가",
+      "visible": true
+    },
+    {
+      "cls": "se-map-toolbar-button se-document-toolbar-basic-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "map",
+      "dataValue": null,
+      "dataLog": "dot.map",
+      "aria": null,
+      "title": "",
+      "text": "장소\n장소 추가",
+      "visible": true
+    },
+    {
+      "cls": "se-not-sponsored-button-toolbar-button se-document-toolbar-custom-button se-text-icon-toolbar-button se-highlight-toolbar-button __se-highlight-button __se-sentry",
+      "dataName": "not-sponsored-button",
+      "dataValue": null,
+      "dataLog": "dot.proof",
+      "aria": null,
+      "title": "",
+      "text": "내돈내산\n내돈내산 상품 첨부",
+      "visible": true
+    },
+    {
+      "cls": "se-search-toolbar-button se-document-toolbar-toggle-button se-text-icon-toolbar-button se-highlight-toolbar-button __se-highlight-button __se-sentry",
+      "dataName": "search",
+      "dataValue": null,
+      "dataLog": "dot.search",
+      "aria": null,
+      "title": "",
+      "text": "글감\n글감 검색 열기",
+      "visible": true
+    },
+    {
+      "cls": "se-moment-toolbar-button se-document-toolbar-toggle-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "moment",
+      "dataValue": null,
+      "dataLog": "dot.moment",
+      "aria": null,
+      "title": "",
+      "text": "내 클립\n내 클립 열기",
+      "visible": true
+    },
+    {
+      "cls": "se-library-toolbar-button se-document-toolbar-toggle-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "library",
+      "dataValue": null,
+      "dataLog": "dot.lib",
+      "aria": null,
+      "title": "",
+      "text": "라이브러리\n라이브러리 열기",
+      "visible": true
+    },
+    {
+      "cls": "se-template-toolbar-button se-document-toolbar-toggle-button se-text-icon-toolbar-button __se-sentry",
+      "dataName": "template",
+      "dataValue": null,
+      "dataLog": "dot.template",
+      "aria": null,
+      "title": "",
+      "text": "템플릿\n템플릿 열기",
+      "visible": true
+    },
+    {
+      "cls": "se-text-format-toolbar-button se-property-toolbar-label-select-button __se-sentry",
+      "dataName": "text-format",
+      "dataValue": null,
+      "dataLog": "prt.fmt",
+      "aria": null,
+      "title": "",
+      "text": "본문\n문단 서식 변경",
+      "visible": true
+    },
+    {
+      "cls": "se-font-family-toolbar-button se-property-toolbar-label-select-button __se-sentry",
+      "dataName": "font-family",
+      "dataValue": null,
+      "dataLog": "prt.font",
+      "aria": null,
+      "title": "",
+      "text": "나눔고딕\n서체 변경",
+      "visible": true
+    },
+    {
+      "cls": "se-font-size-code-toolbar-button se-property-toolbar-label-select-button __se-sentry",
+      "dataName": "font-size",
+      "dataValue": null,
+      "dataLog": "prt.size",
+      "aria": null,
+      "title": "",
+      "text": "15\n글자 크기 변경",
+      "visible": true
+    },
+    {
+      "cls": "se-bold-toolbar-button se-property-toolbar-toggle-button __se-sentry",
+      "dataName": "bold",
+      "dataValue": null,
+      "dataLog": "prt.bold",
+      "aria": null,
+      "title": "",
+      "text": "굵게\n굵기 적용",
+      "visible": true
+    },
+    {
+      "cls": "se-italic-toolbar-button se-property-toolbar-toggle-button __se-sentry",
+      "dataName": "italic",
+      "dataValue": null,
+      "dataLog": "prt.italic",
+      "aria": null,
+      "title": "",
+      "text": "기울이기\n기울이기 적용",
+      "visible": true
+    },
+    {
+      "cls": "se-underline-toolbar-button se-property-toolbar-toggle-button __se-sentry",
+      "dataName": "underline",
+      "dataValue": null,
+      "dataLog": "prt.underline",
+      "aria": null,
+      "title": "",
+      "text": "밑줄\n밑줄 적용",
+      "visible": true
+    },
+    {
+      "cls": "se-strikethrough-toolbar-button se-property-toolbar-toggle-button se-is-selected __se-sentry",
+      "dataName": "strikethrough",
+      "dataValue": null,
+      "dataLog": "prt.strike",
+      "aria": null,
+      "title": "",
+      "text": "취소선\n취소선 해제",
+      "visible": true
+    },
+    {
+      "cls": "se-property-toolbar-color-picker-button se-font-color-toolbar-button __se-sentry",
+      "dataName": "font-color",
+      "dataValue": null,
+      "dataLog": "prt.color",
+      "aria": null,
+      "title": "",
+      "text": "글자색\n글자색 변경",
+      "visible": true
+    },
+    {
+      "cls": "se-property-toolbar-color-picker-button se-background-color-toolbar-button __se-sentry",
+      "dataName": "background-color",
+      "dataValue": null,
+      "dataLog": "prt.bgcolor",
+      "aria": null,
+      "title": "",
+      "text": "배경색\n글자 배경색 변경",
+      "visible": true
+    },
+    {
+      "cls": "se-property-toolbar-drop-down-button se-align-left-toolbar-button __se-sentry",
+      "dataName": "align-drop-down-with-justify",
+      "dataValue": null,
+      "dataLog": "prt.align",
+      "aria": null,
+      "title": "",
+      "text": "정렬\n정렬 열기",
+      "visible": true
+    },
+    {
+      "cls": "se-property-toolbar-drop-down-button se-line-height-toolbar-button __se-sentry",
+      "dataName": "line-height",
+      "dataValue": null,
+      "dataLog": "prt.line",
+      "aria": null,
+      "title": "",
+      "text": "줄간격\n줄간격 열기",
+      "visible": true
+    },
+    {
+      "cls": "se-property-toolbar-drop-down-button se-list-bullet-toolbar-button __se-sentry",
+      "dataName": "list",
+      "dataValue": null,
+      "dataLog": "prt.list",
+      "aria": null,
+      "title": "",
+      "text": "목록\n목록 열기",
+      "visible": true
+    },
+    {
+      "cls": "se-drop-cap-toolbar-button se-property-toolbar-toggle-button __se-sentry",
+      "dataName": "drop-cap",
+      "dataValue": null,
+      "dataLog": "prt.dropcap",
+      "aria": null,
+      "title": "",
+      "text": "머리글자\n머리글자 적용",
+      "visible": true
+    },
+    {
+      "cls": "se-superscript-toolbar-button se-property-toolbar-toggle-button __se-sentry",
+      "dataName": "superscript",
+      "dataValue": null,
+      "dataLog": "prt.supsct",
+      "aria": null,
+      "title": "",
+      "text": "위첨자\n위첨자 적용",
+      "visible": true
+    },
+    {
+      "cls": "se-subscript-toolbar-button se-property-toolbar-toggle-button __se-sentry",
+      "dataName": "subscript",
+      "dataValue": null,
+      "dataLog": "prt.subsct",
+      "aria": null,
+      "title": "",
+      "text": "아래첨자\n아래첨자 적용",
+      "visible": true
+    },
+    {
+      "cls": "se-special-letter-toolbar-button se-property-toolbar-basic-button __se-sentry",
+      "dataName": "special-letter",
+      "dataValue": null,
+      "dataLog": "prt.spclet",
+      "aria": null,
+      "title": "",
+      "text": "특수문자\n특수문자 열기",
+      "visible": true
+    },
+    {
+      "cls": "se-link-toolbar-button se-property-toolbar-custom-layer-button __se-sentry",
+      "dataName": "text-link",
+      "dataValue": null,
+      "dataLog": null,
+      "aria": null,
+      "title": "",
+      "text": "링크\n링크 입력 열기",
+      "visible": true
+    },
+    {
+      "cls": "se-translation-toolbar-button se-property-toolbar-basic-button __se-sentry",
+      "dataName": "translation-right-label",
+      "dataValue": null,
+      "dataLog": "prt.translation",
+      "aria": null,
+      "title": "",
+      "text": "번역\n번역",
+      "visible": true
+    },
+    {
+      "cls": "se-speller-toolbar-button se-property-toolbar-basic-button __se-sentry",
+      "dataName": "speller",
+      "dataValue": null,
+      "dataLog": "prt.spl",
+      "aria": null,
+      "title": "",
+      "text": "맞춤법\n맞춤법",
+      "visible": true
+    },
+    {
+      "cls": "se-flayer-unified-category-dropdown-trigger",
+      "dataName": null,
+      "dataValue": null,
+      "dataLog": null,
+      "aria": "카테고리 열기",
+      "title": null,
+      "text": "전체 글감\n카테고리 열기",
+      "visible": true
+    },
+    {
+      "cls": "se-flayer-unified-search-button",
+      "dataName": null,
+      "dataValue": null,
+      "dataLog": null,
+      "aria": "검색",
+      "title": null,
+      "text": "",
+      "visible": true
+    },
+    {
+      "cls": "se-flayer-unified-fold-button",
+      "dataName": null,
+      "dataValue": null,
+      "dataLog": "matuni.fold",
+      "aria": "접기",
+      "title": null,
+      "text": "접기",
+      "visible": true
+    }
+  ],
+  "textState": {
+    "html": "<span id=\"SE-a2e80e9f-4d39-47f6-9c62-f00d313539d8\" class=\"se-ff-nanumgothic se-fs15 __se-node\" style=\"color: rgb(0, 0, 0);\"><strike>진단용 텍스트입니다</strike></span>"
+  },
+  "publishBtns": [
+    {
+      "cls": "reserve_btn__Km5Xh",
+      "dataName": null,
+      "dataLog": null,
+      "text": "예약 발행 0건",
+      "visible": false
+    },
+    {
+      "cls": "publish_btn__m9KHH",
+      "dataName": null,
+      "dataLog": null,
+      "text": "발행",
+      "visible": true
+    }
+  ],
+  "layerDump": {
+    "error": "locator.click: Timeout 3000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"발행\")').first()\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" class=\"reserve_btn__Km5Xh\" data-click-area=\"tpb*t.schedule\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    6 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+  }
+}

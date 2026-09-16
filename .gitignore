@@ -1,0 +1,30 @@
+# 의존성
+node_modules/
+
+# 로그인 세션 — 네이버·클립아트코리아 쿠키가 들어 있어 절대 올리면 안 됨
+data/auth/
+
+# 이미지 (클립아트코리아 유료 회원 다운로드분 — 재배포 불가)
+data/images/
+
+# 수집 원문 (타 블로그·언론사 본문 포함)
+data/crawls/
+
+# 설정 (블로그 ID·이미지 API 키가 들어감)
+data/config.json
+
+# 실행 중 상태
+data/queue.json
+data/queue.json.bak
+data/used-topics.json
+data/used-images.json
+
+# 작업용 임시 스크립트
+_*.mjs
+_*.png
+*.bak
+
+# 원고·영업 자산 (로컬에만 보관, 공개 저장소에 올리지 않음)
+data/drafts/
+data/persona/
+data/ideas/
